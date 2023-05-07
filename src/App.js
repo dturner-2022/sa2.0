@@ -904,20 +904,19 @@ function handleSelectCharacter(char){
   //else add character to the array, reaching 3 characters update teammember state with the names
   //when reaching 3 character additional clicks will remove 0 index char and add latest click as
   //at index 2
-  if (arrayCopy.includes(char.charID)) {
-    const index = arrayCopy.findIndex((num) => num === char.charID);
-    if (index !== -1) arrayCopy.splice(index, 1);
-  } else {
-    if (arrayCopy.length === 3) {
-      arrayCopy.shift();
-      setSelectedChars(arrayCopy);
-      setTeamMembers(
-        selectedChars[0] + " " + selectedChars[1] + " " + selectedChars[2] + " "
-      );
-    }
-    arrayCopy.push(char.charName);
+    if (arrayCopy.includes(char.charID)) {
+      const index = arrayCopy.findIndex((num) => num === char.charID);
+      if (index !== -1) arrayCopy.splice(index, 1);
+    } else {
+      if (arrayCopy.length === 3) {
+        arrayCopy.shift();
+           setSelectedChars(arrayCopy);
+
+      }
+      arrayCopy.push(char.charName);
+    }      setTeamMembers(arrayCopy);     
+
   }
-}
 
   function highlightChar(i) {
       if (selectedChars.includes(i)) {
@@ -997,11 +996,11 @@ function handleSelectCharacter(char){
       Name: teamName,
       Background: teamBg,
       memberID: [1, 2, 3],
-      Members: teamMembers.split(" ", teamMembers.length),
+      Members: teamMembers,
       imgSrc: [
-        require("./" + "char_images/" + teamMembers.split(" ", 1)[0] + ".jpg"),
-        require("./" + "char_images/" + teamMembers.split(" ", 2)[1] + ".jpg"),
-        require("./" + "char_images/" + teamMembers.split(" ", 3)[2] + ".jpg"),
+        require("./" + "char_images/" + teamMembers[0] + ".png"),
+        require("./" + "char_images/" + teamMembers[1] + ".png"),
+        require("./" + "char_images/" + teamMembers[2] + ".png"),
       ],
     };
     //Adds newly created team into the teams array.
